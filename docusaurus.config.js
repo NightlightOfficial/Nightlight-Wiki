@@ -10,10 +10,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'NightLight Wiki',
-  //TODO: Put the tagline here
-  tagline: 'TODO:put tagline here',
-  favicon: 'img/favicon.ico',
+  title: 'Whatcha need help with?',
+  tagline: 'Choose from the topics below or contact us with more specific questions!',
+  favicon: 'img/nightlight-logo.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -84,13 +83,15 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
-        respectPrefersColorScheme: true,
+        respectPrefersColorScheme: false,
+        defaultMode: 'dark',
+        disableSwitch: true,
       },
       navbar: {
         title: 'NightLight Wiki',
         logo: {
           alt: 'NightLight Logo',
-          src: 'img/logo.svg',
+          src: 'img/nightlight-logo.png',
         },
         items: [
           {
@@ -100,11 +101,6 @@ const config = {
             label: 'Tutorial',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
         ],
       },
       footer: {

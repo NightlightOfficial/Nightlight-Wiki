@@ -28,3 +28,41 @@
   --ifm-color-primary-lightest: #E6B3F6;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* My custom CSS file, that makes this more nightlight-ish starts here :P */
+
+.hero--primary {
+  --ifm-hero-background-color: #322e3a !important;
+  --ifm-hero-text-color: #ecdcf8 !important;
+}
+
+.navbar {
+  background-color: rgba(28, 28, 28, 0.71) !important;
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  display: flex;
+}
+
+.footer {
+  background-color: #322e3a !important;
+}
+
+.aa-DetachedSearchButton {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0) !important;
+  border: 1px solid #322E3A !important;
+  color: rgba(156, 126, 163, 0.6) !important;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  margin: 0;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  min-width: 200px !important;
+  border-radius: 20px !important;
+}
+
+.aa-DetachedSearchButtonIcon {
+  color: rgba(156, 126, 163, 0.6) !important;
+}
