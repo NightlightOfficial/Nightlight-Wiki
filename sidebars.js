@@ -66,18 +66,15 @@ const sidebars = {
   guidesSidebar: [
     {
       type: 'category',
-      label: 'GUIDES',
+      label: 'MAKING ITEMS',
       collapsible: false,
       items: [
-        'guides/badges',
-        'guides/leaderboards'
+        'guides/guidelines',
+        'guides/profile-decorations',
+        'guides/profile-music',
+        'guides/themes',
+        'guides/titles'
       ],
-    },
-    {
-      type: 'category',
-      label: 'ADVANCED',
-      collapsible: false,
-      items: ['guides/badges'],
     },
   ],
 

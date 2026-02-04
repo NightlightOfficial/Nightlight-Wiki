@@ -6,7 +6,7 @@ const FeatureList = [
     {
         title: 'Text Formatting',
         icon: 'text_fields',
-        link: '/docs/intro',
+        link: '/docs/basics/text-formatting',
         description: (
             <>
                 How to format texts on post using Nightlight's custom text formatting.
@@ -16,7 +16,7 @@ const FeatureList = [
     {
         title: 'Creator Hub',
         icon: 'construction',
-        link: '/docs/essentials',
+        link: '/docs/basics/creator-hub',
         description: (
             <>
                 Release your own items, keep track of your released items and more!
@@ -26,7 +26,7 @@ const FeatureList = [
     {
         title: 'Verification',
         icon: 'check_circle',
-        link: '/docs/advanced',
+        link: '/docs/basics/verification',
         description: (
             <>
                 What does it mean to be verified and how to get verified?
@@ -36,7 +36,7 @@ const FeatureList = [
     {
         title: 'Leaderboards',
         icon: 'star',
-        link: '/docs/advanced',
+        link: '/docs/basics/leaderboards',
         description: (
             <>
                 Feeling competitive? Learn more about the Nightlight Leaderboard
@@ -46,7 +46,7 @@ const FeatureList = [
     {
         title: 'Guides',
         icon: 'book',
-        link: '/docs/advanced',
+        link: '/docs/guides/guidelines',
         description: (
             <>
                 Learn how to make items for the Nightlight Marketplace

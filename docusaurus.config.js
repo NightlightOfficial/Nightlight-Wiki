@@ -88,7 +88,7 @@ const config = {
         disableSwitch: true,
       },
       navbar: {
-        title: 'NightLight Wiki',
+        title: 'Nightlight Wiki',
         logo: {
           alt: 'NightLight Logo',
           src: 'img/nightlight-logo.png',
