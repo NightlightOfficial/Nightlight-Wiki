@@ -1,0 +1,98 @@
+import clsx from 'clsx';
+import Heading from '@theme/Heading';
+import styles from './styles.module.css';
+
+const FeatureList = [
+    {
+        title: 'Text Formatting',
+        icon: 'text_fields',
+        link: '/docs/intro',
+        description: (
+            <>
+                How to format texts on post using Nightlight's custom text formatting.
+            </>
+        ),
+    },
+    {
+        title: 'Creator Hub',
+        icon: 'construction',
+        link: '/docs/essentials',
+        description: (
+            <>
+                Release your own items, keep track of your released items and more!
+            </>
+        ),
+    },
+    {
+        title: 'Verification',
+        icon: 'check_circle',
+        link: '/docs/advanced',
+        description: (
+            <>
+                What does it mean to be verified and how to get verified?
+            </>
+        ),
+    },
+    {
+        title: 'Leaderboards',
+        icon: 'star',
+        link: '/docs/advanced',
+        description: (
+            <>
+                Feeling competitive? Learn more about the Nightlight Leaderboard
+            </>
+        ),
+    },
+    {
+        title: 'Guides',
+        icon: 'book',
+        link: '/docs/advanced',
+        description: (
+            <>
+                Learn how to make items for the Nightlight Marketplace
+            </>
+        ),
+    },
+];
+
+function Feature({title, description, icon, link}) {
+    return (
+        <div className={clsx('col col--4 margin-bottom--lg')}>
+            <a href={link} className={clsx('card', styles.featureCard)}>
+                <div className="card__header">
+                    <Heading as="h3" className={styles.featureTitle}>
+            <span className={clsx('material-icons', styles.iconInline)}>
+              {icon}
+            </span>
+                        {title}
+                    </Heading>
+                </div>
+                <div className="card__body">
+                    <p>{description}</p>
+                </div>
+            </a>
+        </div>
+    );
+}
+
+export default function HomeAdvanced() {
+    return (
+        <section className={styles.features}>
+            <div className="container">
+                <div className="text--start margin-bottom--xl">
+                    <Heading as="h2" className={styles.sectionTitle}>
+                        Advanced features
+                    </Heading>
+                    <p className={styles.sectionSubtitle}>
+                        Already explored and figured out the basics? Learn these features to further expand what you can do on Nightlight!
+                    </p>
+                </div>
+                <div className="row">
+                    {FeatureList.map((props, idx) => (
+                        <Feature key={idx} {...props} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
