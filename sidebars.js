@@ -64,6 +64,7 @@ const sidebars = {
     },
   ],
   guidesSidebar: [
+      'guides/guides',
     {
       type: 'category',
       label: 'MAKING ITEMS',

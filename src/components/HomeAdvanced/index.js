@@ -46,7 +46,7 @@ const FeatureList = [
     {
         title: 'Guides',
         icon: 'book',
-        link: '/docs/guides/guidelines',
+        link: '/docs/guides/',
         description: (
             <>
                 Learn how to make items for the Nightlight Marketplace

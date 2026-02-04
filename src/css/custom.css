@@ -97,3 +97,29 @@ tr:nth-child(even) {
   border: 1px solid #484355 !important;
   border-radius: 20px !important;
 }
+
+/* Custom cards for articles */
+.clickable-card {
+  margin-top: 10px;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid #322E3A !important;
+  padding-bottom: 18px;
+  transition: 0.5s;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.clickable-card:hover {
+  background-color: #1f1f22 !important;
+  text-decoration: none;
+  border: 1px solid #484355 !important;
+  transition: 0.5s;
+}
