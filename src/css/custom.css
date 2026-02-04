@@ -19,7 +19,7 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #B51BE4;
+  --ifm-color-primary: #ce82e8;
   --ifm-color-primary-dark: #8D15B1;
   --ifm-color-primary-darker: #650F7F;
   --ifm-color-primary-darkest: #3C094C;
@@ -47,6 +47,7 @@
   background-color: #322e3a !important;
 }
 
+/* Search button thingy */
 .aa-DetachedSearchButton {
   align-items: center;
   background-color: rgba(255, 255, 255, 0) !important;
@@ -65,4 +66,32 @@
 
 .aa-DetachedSearchButtonIcon {
   color: rgba(156, 126, 163, 0.6) !important;
+}
+
+/* Sidebar while viewing articles */
+@media (min-width: 997px) {
+  .docSidebarContainer_YfHR {
+    border-right: 1px solid #322E3A !important;
+  }
+}
+
+/* Tables in articles (and in general btw i just misstyped :3) */
+table, th, td {
+  border: 1px solid #322E3A !important;
+}
+
+tr:nth-child(even) {
+  background-color: #232327;
+}
+
+/* Navigation on the bottom of articles */
+
+.pagination-nav__link {
+  border: 1px solid #322E3A !important;
+  border-radius: 20px !important;
+}
+
+.pagination-nav__link:hover {
+  border: 1px solid #484355 !important;
+  border-radius: 20px !important;
 }
