@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Whatcha need help with?',
+  title: 'Nightlight wiki',
   tagline: 'Choose from the topics below or contact us with more specific questions!',
   favicon: 'img/nightlight-logo.png',
 
@@ -22,7 +22,7 @@ const config = {
   plugins: ["@cmfcmf/docusaurus-search-local"],
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://wiki.nightlightapp.net',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -51,8 +51,11 @@ const config = {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+          breadcrumbs: true,
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/NightlightOfficial/Nightlight-Wiki/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -63,7 +66,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/NightlightOfficial/Nightlight-Wiki/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -81,7 +84,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/social-card.jpg',
       colorMode: {
         respectPrefersColorScheme: false,
         defaultMode: 'dark',
@@ -115,8 +118,16 @@ const config = {
             title: 'Wiki',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Text formatting',
+                to: '/docs/basics/text-formatting',
+              },
+              {
+                label: 'Blocking',
+                to: '/docs/basics/blocking',
+              },
+              {
+                label: 'Managing privacy',
+                to: '/docs/basics/managing-privacy',
               },
             ],
           },
@@ -137,17 +148,13 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
                 href: 'https://github.com/NightlightOfficial/Nightlight-Wiki',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} NightLight. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} NightLight. Built by a kitty.`,
       },
       prism: {
         theme: prismThemes.github,

@@ -19,6 +19,7 @@ const sidebars = {
   basicsSidebar: [
     {
       type: 'category',
+      className: 'sidebar-header-getting-started',
       label: 'GETTING STARTED',
       collapsible: false,
       items: [

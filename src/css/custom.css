@@ -78,14 +78,34 @@
 }
 
 /* Tables in articles (and in general btw i just misstyped :3) */
-table, th, td {
+table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 20px;
+  overflow: hidden;
   border: 1px solid #322E3A !important;
+  margin-bottom: 2rem;
+  background-color: #1e1e1e;
 }
 
-tr:nth-child(even) {
-  background-color: #232327;
+thead {
+  background-color: #2b2832 !important;
 }
 
+th {
+  text-align: left;
+  border: 1px solid #322E3a !important;
+}
+
+td {
+  border: 1px solid #322E3a !important;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #28282A !important;
+}
 /* Navigation on the bottom of articles */
 
 .pagination-nav__link {
@@ -122,4 +142,14 @@ tr:nth-child(even) {
   text-decoration: none;
   border: 1px solid #484355 !important;
   transition: 0.5s;
+}
+
+/* Icons for the sidebar items */
+.sidebar-header-getting-started .menu__link--sublist::before {
+  font-family: 'Material Icons';
+  content: 'speed';
+}
+
+.article-icon {
+  vertical-align: middle;
 }
