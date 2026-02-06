@@ -110,6 +110,12 @@ const config = {
             position: 'left',
             label: 'Guides',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'apiSidebar',
+            position: 'left',
+            label: 'API',
+          },
         ],
       },
       footer: {

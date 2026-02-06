@@ -1,0 +1,188 @@
+---
+sidebar_label: 'Posts'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Posts
+
+**Headers**
+
+The following headers need to be sent with any request
+
+| Name         | Value              |
+| ------------ | ------------------ |
+| Content-Type | `application/json` |
+| Cookies      | `username & token` |
+
+## Retrieving
+
+<mark style={{color:'green'}}>`GET`</mark> `/post/<id>`
+
+    Retrieving data about an existing post
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <PostData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    #### PostData example
+
+    ```json
+    {
+        "post": {
+        "id":"e06c0896f9b15ce24503",
+        "content":"Here goes post description",
+        "category":"other",
+        "dateAdded":"28 minutes ago",
+        "dateAddedRaw":"2025-12-20 22:07:39",
+        "fileName":"e06c0896f9b15ce24503.png",
+        "isAuthor":true,
+        "likes":4,
+        "commentCount":0,
+        "views":null,
+        "hasLiked":false,
+        "hasReposted":false,
+        "showViews":false,
+        "pinned":false,
+        "provider":"nightlight",
+        "visibility":0,
+        "hasBookmarked":false
+    },
+        "author":{
+        "username":"nightlight",
+        "displayName":"Nightlight",
+        "picture":"https:\/\/cdn.night-light.cz\/uploads\/nightlight\/profilePicture.gif?reload=2025-04-0116:07:47",
+        "banner":"https:\/\/cdn.night-light.cz\/uploads\/nightlight\/profileBanner.gif?                reload=2025-04-0116:07:47",
+        "verified":true,
+        "decoration":"none",
+        "title":"none",
+        "subscription":null
+    },
+        "comments":[]
+    }
+    ```
+
+    :::note
+    
+    hasLiked, hasReposted and hasBookmarked are all related to the user requesting the data
+    
+    :::
+
+    ## Creating
+
+    <mark style={{color:'green',}}>`POST`</mark> `/post`
+
+    Creates a new post under the current user
+
+    **Body**
+
+    Must be sent as `FormData`
+
+    | Name         | Type      | Description                  |
+    | ------------ | --------- | ---------------------------- |
+    | `content`    | string    | Description of the post      |
+    | `category`   | number    | Category of the post         |
+    | `visibility` | int (0-2) | Visibility of the post       |
+    | `views`      | int (0-2) | Views visibility of the post |
+    | ?`file`      | File      | Media file for the post      |
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="success" label="Success" default>
+            ```json
+            {
+                "status": "success",
+                "message": "Post has been successfully uploaded.",
+                "data": <PostData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="error" label="Error">
+            ```json
+            {
+                "status": "error",
+                "message": "Error message here"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    ## Updating
+
+    <mark style={{color:'green',}}>`POST`</mark> `/post/<id>`
+
+        Updates an existing post
+
+        **Body**
+
+        | Name      | Type      | Description                     |
+        | --------- | --------- | ------------------------------- |
+        | `content` | string    | Updated post description        |
+        | `pinned`  | int (0-1) | Whether the post will be pinned |
+
+        **Response**
+
+        <Tabs>
+            <TabItem value="success" label="Success" default>
+                ```json
+                {
+                    "status": "success",
+                    "message": "Post has been successfully updated.",
+                    "data": <PostData>
+                }
+                ```
+            </TabItem>
+            <TabItem value="error" label="Error">
+                ```json
+                {
+                    "status": "error",
+                    "message": "Error message here"
+                }
+                ```
+            </TabItem>
+        </Tabs>
+
+        ## Deleting
+
+        <mark style={{color:'red',}}>`DELETE`</mark> `/post/<id>`
+
+            Deletes a post and its data
+
+            **Response**
+
+            <Tabs>
+                <TabItem value="200" label="200" default>
+                    ```json
+                    {
+                        "status": "success",
+                        "message": "Post has been deleted"
+                    }
+                    ```
+                </TabItem>
+                <TabItem value="400" label="400">
+                    ```json
+                    {
+                        "status": "error",
+                        "message": "Error message here"
+                    }
+                    ```
+                </TabItem>
+            </Tabs>

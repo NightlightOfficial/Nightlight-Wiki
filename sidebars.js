@@ -79,6 +79,26 @@ const sidebars = {
       ],
     },
   ],
+  apiSidebar: [
+    {
+      type: 'category',
+      label: 'OVERVIEW',
+      collapsible: false,
+      items: [
+        'api/terms-of-use',
+        'api/additional-information'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'API USAGE',
+      collapsible: false,
+      items: [
+        'api/url-base',
+        'api/posts'
+      ],
+    },
+  ],
 
   // But you can create a sidebar manually
   /*
