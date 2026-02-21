@@ -9,11 +9,11 @@ Lumina fetches a personalized list of recommended posts for the current user, sc
 ## Overview
 
 ```
-User Request
-     │
-     |
-     |
-     ▼
+     User Request
+          │
+          |
+          |
+          ▼
 ┌──────────────────────────────┐
 │  Load Category Preferences   │
 │  (from cache or live query)  │
@@ -138,18 +138,5 @@ Author C → 5 eligible posts → only the top-scored one is kept
 
 ---
 
-## Summary
-
-```
-User request
-     │
-     ├─ 1. Load (or cache) top 3 liked categories
-     │
-     ├─ 2. Filter out ineligible posts
-     │
-     ├─ 3. Score each post across 6 signals
-     │
-     ├─ 4. Keep only the best post per author
-     │
-     └─ 5. Return the top N results by score
-```
+# See something you think could improve?
+If you think some parts about the algorithm could be improved, let us know on our Discord or support@nightlightapp.net !
