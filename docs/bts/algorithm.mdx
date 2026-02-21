@@ -1,0 +1,155 @@
+---
+sidebar_label: 'Lumina Algorithm'
+---
+# Lumina Algorithm
+The algorithm for Nightlight which powers the home page recommendations.
+## How does it work?
+Lumina fetches a personalized list of recommended posts for the current user, scored and ranked using a combination of category affinity, recency, engagement, and view history.
+
+## Overview
+
+```
+User Request
+     │
+     |
+     |
+     ▼
+┌──────────────────────────────┐
+│  Load Category Preferences   │
+│  (from cache or live query)  │
+└──────────────────────────────┘
+          │
+          ▼
+┌──────────────────────────────┐
+│  Score every eligible post   │
+│  using ranking signals       │
+└──────────────────────────────┘
+          │
+          ▼
+┌──────────────────────────────┐
+│  Keep only the best post     │
+│  per author                  │
+└──────────────────────────────┘
+          │
+          ▼
+   Return top N results
+   ordered by score
+```
+
+---
+
+## Step 1 - Category Preference Loading
+
+The algorithm learns what kind of content the user enjoys by looking at their most liked post categories. To avoid doing this on every request, the result is **cached for 10 hours**.
+
+```
+┌─────────────────────────────────────────┐
+│         Check preference cache          │
+│      (is it less than 10 hours old?)    │
+└─────────────────────────────────────────┘
+              │                 │
+             YES                NO
+              │                 │
+              ▼                 ▼
+          Use cached       Look up the top 3
+          categories       categories from the
+              │            user's liked posts
+              │                  │
+              │                  │
+              │                  │
+              │          Save result to cache
+              │           for next 10 hours
+              │                  │
+              └────────┬─────────┘
+                       ▼
+               Score calculated
+```
+
+> **Example:** `gaming`, `music`, `art` - in order of most liked to least.
+
+---
+
+## Step 2 - Filtering
+
+Before scoring, posts are filtered down to only those that are eligible to appear in recommendations.
+
+| Filter | Reason |
+|---|---|
+| Not the user's own posts | Recommendations are for discovering others |
+| Not private posts | Respect visibility settings |
+| Not reposts | Original content only |
+| Posted within the last 6 months | Avoid surfacing very stale content |
+| Not seen in the last 24 hours | Prioritize fresh or unseen posts |
+| Not from a blocked user | Respect block relationships |
+| Not from a restricted account | Respect platform restrictions |
+
+---
+
+## Step 3 - Scoring
+
+Every eligible post is given a **score**. The higher the score, the more relevant the post is to the user. The score is built from several independent signals added together.
+
+```
+score =
+  Category Match Bonus
++ Recency Bonus
++ View Status Modifier
++ Recent Re-view Penalty
++ Staleness Penalty
++ Engagement Score or Low-Engagement Penalty
+```
+
+### Scoring Signals
+
+| Signal | Condition | Points |
+|---|---|---|
+| **Category match** | Post matches the user's #1 liked category | +30 |
+| **Category match** | Post matches the user's #2 liked category | +20 |
+| **Category match** | Post matches the user's #3 liked category | +10 |
+| **Fresh post** | Posted within the last **24 hours** | +100 |
+| **Not yet viewed** | User has never seen this post | +30 |
+| **Already viewed** | User has a view record for this post | −30 |
+| **Recently viewed** | Viewed within the last **week** | −50 |
+| **Old post** | Posted more than **1 month** ago | −20 |
+| **Low engagement** | Fewer than 5 likes AND older than **3 days** | −50 |
+| **Engagement** | Otherwise: like count contributes proportionally | +varies |
+
+### Scoring Examples
+
+> **Great match** - Post is in the user's #1 category, posted yesterday, never viewed, has 20 likes:
+> `30 + 100 + 30 + (20 ÷ 10)` = **162 points**
+
+> **Poor match** - Post is 2 months old, viewed last week, only 2 likes:
+> `−30 + (−50) + (−20) + (−50)` = **−150 points**
+
+---
+
+## Step 4 - Per-Author Deduplication
+
+To keep the feed **diverse**, only the single highest-scoring post from each author is kept. If an author has multiple eligible posts, only their best one makes it through.
+
+```
+Author A → 3 eligible posts → only the top-scored one is kept
+Author B → 1 eligible post  → kept as-is
+Author C → 5 eligible posts → only the top-scored one is kept
+
+         Final feed: one post per author, ordered by score
+```
+
+---
+
+## Summary
+
+```
+User request
+     │
+     ├─ 1. Load (or cache) top 3 liked categories
+     │
+     ├─ 2. Filter out ineligible posts
+     │
+     ├─ 3. Score each post across 6 signals
+     │
+     ├─ 4. Keep only the best post per author
+     │
+     └─ 5. Return the top N results by score
+```

@@ -116,6 +116,12 @@ const config = {
             position: 'left',
             label: 'API',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'btsSidebar',
+            position: 'left',
+            label: 'BTS',
+          },
         ],
       },
       footer: {

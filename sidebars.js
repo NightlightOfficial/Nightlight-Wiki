@@ -99,6 +99,16 @@ const sidebars = {
       ],
     },
   ],
+  btsSidebar: [
+    {
+      type: 'category',
+      label: 'OVERVIEW',
+      collapsible: false,
+      items: [
+        'bts/algorithm'
+      ],
+    },
+  ],
 
   // But you can create a sidebar manually
   /*
