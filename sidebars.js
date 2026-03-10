@@ -79,6 +79,16 @@ const sidebars = {
       ],
     },
   ],
+  brandingSidebar: [
+    {
+      type: 'category',
+      label: 'OVERVIEW',
+      collapsible: false,
+      items: [
+        'branding/overview'
+      ],
+    },
+  ],
   apiSidebar: [
     {
       type: 'category',

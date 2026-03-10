@@ -112,6 +112,12 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'brandingSidebar',
+            position: 'left',
+            label: 'Branding',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'apiSidebar',
             position: 'left',
             label: 'API',
