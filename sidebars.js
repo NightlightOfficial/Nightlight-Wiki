@@ -105,7 +105,10 @@ const sidebars = {
       collapsible: false,
       items: [
         'api/url-base',
-        'api/posts'
+        'api/user',
+        'api/posts',
+        'api/polls',
+        'api/comments'
       ],
     },
   ],

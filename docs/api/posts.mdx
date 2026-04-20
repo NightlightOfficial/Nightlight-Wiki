@@ -47,35 +47,77 @@ The following headers need to be sent with any request
     ```json
     {
         "post": {
-        "id":"e06c0896f9b15ce24503",
-        "content":"Here goes post description",
-        "category":"other",
-        "dateAdded":"28 minutes ago",
-        "dateAddedRaw":"2025-12-20 22:07:39",
-        "fileName":"e06c0896f9b15ce24503.png",
-        "isAuthor":true,
-        "likes":4,
-        "commentCount":0,
-        "views":null,
-        "hasLiked":false,
-        "hasReposted":false,
-        "showViews":false,
-        "pinned":false,
-        "provider":"nightlight",
-        "visibility":0,
-        "hasBookmarked":false
-    },
-        "author":{
-        "username":"nightlight",
-        "displayName":"Nightlight",
-        "picture":"https:\/\/cdn.night-light.cz\/uploads\/nightlight\/profilePicture.gif?reload=2025-04-0116:07:47",
-        "banner":"https:\/\/cdn.night-light.cz\/uploads\/nightlight\/profileBanner.gif?                reload=2025-04-0116:07:47",
-        "verified":true,
-        "decoration":"none",
-        "title":"none",
-        "subscription":null
-    },
-        "comments":[]
+            "id": "5243923bc30a49a8de72",
+            "content": "== We would love to do game events!\r\nNightlight wants to host events for users to gather on and play together. Which game would you want this to be?\r\n-= You can also comment down other games if they&#039;re not listed!",
+            "type": "poll", // poll | regular | repost
+            "category": "gaming",
+            "dateAdded": "2 months ago",
+            "dateAddedRaw": "2026-02-27 18:14:45",
+            "files": [],
+            "fileName": "",
+            "isAuthor": true,
+            "likes": 8,
+            "commentCount": 4,
+            "views": null,
+            "hasLiked": false,
+            "hasReposted": false,
+            "showViews": false,
+            "pinned": false,
+            "provider": "nightlight",
+            "visibility": 0,
+            "hasBookmarked": false
+        },
+        "author": {
+            "username": "nightlight",
+            "displayName": "Nightlight",
+            "picture": "https:\\/\\/cdn.night-light.cz\\/uploads\\/nightlight\\/profilePicture.gif?reload=2025-04-0116:07:47",
+            "banner": "https:\\/\\/cdn.night-light.cz\\/uploads\\/nightlight\\/profileBanner.gif?reload=2025-04-0116:07:47",
+            "verified": true,
+            "decoration": "none",
+            "title": "none",
+            "subscription": null
+        },
+        // if the post has any modules like posts, those are added here
+        "poll": {
+            "id": 52,
+            "expires": "2026-03-01 11:00:00",
+            "options": [
+            {
+                "id": 128,
+                "content": "Minecraft (Java)",
+                "votes": 10,
+                "hasVoted": false
+            },
+            {
+                "id": 129,
+                "content": "Deadlock",
+                "votes": 1,
+                "hasVoted": false
+            },
+            {
+                "id": 130,
+                "content": "Rocket League",
+                "votes": 1,
+                "hasVoted": false
+            },
+            {
+                "id": 131,
+                "content": "Fortnite",
+                "votes": 1,
+                "hasVoted": false
+            },
+            {
+                "id": 132,
+                "content": "VRChat",
+                "votes": 5,
+                "hasVoted": false
+            }
+            ]
+        },
+        "comments": [?CommentData], //top comment for the post
+        "me": {
+            "isModerator": false
+        }
     }
     ```
 
@@ -102,6 +144,7 @@ The following headers need to be sent with any request
     | `visibility` | int (0-2) | Visibility of the post       |
     | `views`      | int (0-2) | Views visibility of the post |
     | ?`files`     | File      | Media file(s) for the post   |
+    | ?`poll`      | PollData  | Makes this post type poll and adds the specified options |
 
     **Response**
 
@@ -125,6 +168,18 @@ The following headers need to be sent with any request
         </TabItem>
     </Tabs>
 
+    ### Polls
+    Polls are a type of posts which include votable options on them.
+    #### PollData
+    Data for polls contain 2 keys - **expires** and **options**
+    | Name         | Type      | Description                  |
+    | ------------ | --------- | ---------------------------- |
+    | `expires`    | DateTime  | The date of expiry of this poll  |
+    | `options`    | string[]  | Votable options for this poll |
+
+    #### Options
+    Each option is a simple string
+
     ## Updating
 
     <mark style={{color:'green',}}>`POST`</mark> `/post/<id>`
@@ -137,6 +192,7 @@ The following headers need to be sent with any request
         | --------- | --------- | ------------------------------- |
         | `content` | string    | Updated post description        |
         | `pinned`  | int (0-1) | Whether the post will be pinned |
+        | `category`| string    | Update post category            |
 
         **Response**
 

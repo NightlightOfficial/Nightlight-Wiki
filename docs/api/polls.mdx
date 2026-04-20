@@ -1,0 +1,36 @@
+---
+sidebar_label: 'Polls'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Polls
+
+**Headers**
+
+The following headers need to be sent with any request
+
+| Name         | Value              |
+| ------------ | ------------------ |
+| Content-Type | `application/json` |
+| Cookies      | `username & token` |
+
+
+## Voting
+
+<mark>`POST`</mark> `/poll/vote`
+
+Votes for a poll option
+
+**Body**
+
+Must be sent as `FormData`
+
+| Name         | Type      | Description                  |
+| ------------ | --------- | ---------------------------- |
+| `id` | int | ID of the poll     |
+| `optionId` | int | ID of the poll option to vote for     |
+
+
+Looking for creating, retrieving or getting the structure of polls? [Check out posts](http://localhost:3000/docs/api/posts#creating)

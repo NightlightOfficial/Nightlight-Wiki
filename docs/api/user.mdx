@@ -1,0 +1,197 @@
+---
+sidebar_label: 'User'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# User
+
+**Headers**
+
+The following headers need to be sent with any request
+
+| Name         | Value              |
+| ------------ | ------------------ |
+| Content-Type | `application/json` |
+| Cookies      | `username & token` |
+
+## Retrieving
+
+<mark style={{color:'green'}}>`GET`</mark> `/user`
+
+    Retrieving data about the current user
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <UserData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    #### UserData example
+
+    ```json
+    {
+        "username": "itenerai",
+        "displayName": "iTenerai",
+        "bio": "hi there!",
+        "pronouns": "she/her",
+        "picture": "imageLinkHere",
+        "banner": "imageLinkHere",
+        "status": "crafting and mining",
+        "level": 68,
+        "xp": 420,
+        "verified": true,
+        "subscription": "auronita"
+    }
+    ```
+
+    ## Inventory
+    Endpoints for the current user's inventory. Manipulating and retrieving.
+
+    ### Retrieving items
+
+    <mark style={{color:'green',}}>`GET`</mark> `/user/getInventory`
+
+    Retrieves the list of items in the current user's inventory
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="success" label="Success" default>
+            ```json
+            {
+                "status": "success",
+                "data": <InventoryData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="error" label="Error">
+            ```json
+            {
+                "status": "error",
+                "message": "Error message here"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    #### InventoryData example
+
+    ```json
+    {
+      "id": "1000users",
+      "title": "1000 Users Celebration",
+      "type": 0,
+      "format": "png",
+      "equipped": false
+    },
+    {
+      "id": "1000users",
+      "title": "1000 Users Celebration",
+      "type": 0,
+      "format": "png",
+      "equipped": false
+    }
+    ```
+
+    ### Equipping items
+
+    <mark style={{color:'green',}}>`POST`</mark> `/user/equipItem`
+
+    Equips the specified item for the user
+
+    **Body**
+
+    Must be sent as `FormData`
+
+    | Name         | Type      | Description                  |
+    | ------------ | --------- | ---------------------------- |
+    | `itemId`     | string    | ID of the item to be equipped      |
+
+    ### Unequipping items
+
+    <mark style={{color:'green',}}>`POST`</mark> `/user/unequipItem`
+
+    Unequips the specified item for the user
+
+    **Body**
+
+    Must be sent as `FormData`
+
+    | Name         | Type      | Description                  |
+    | ------------ | --------- | ---------------------------- |
+    | `itemId`     | string    | ID of the item to be unequipped      |
+
+    ## User interactions
+
+    ### Following
+    Send a signal to follow, or unfollow if already following, a user
+    
+    <mark style={{color:'green',}}>`POST`</mark> `/user/follow`
+
+    **Body**
+
+    Must be sent as `FormData`
+
+    | Name         | Type      | Description                  |
+    | ------------ | --------- | ---------------------------- |
+    | `followed`     | string    | Username of the user to follow      |
+
+    ## Notifications
+
+    ### Getting unread notifications
+
+    <mark style={{color:'green',}}>`GET`</mark> `/user/getUnreadNotifications`
+
+    Retrieves the currently unread notifications for the user
+
+    ### Update notification preference
+
+    <mark style={{color:'green',}}>`POST`</mark> `/user/updateNotificationPreference`
+
+    Toggle post notifications for a followed user
+
+    **Body**
+
+    Must be sent as `FormData`
+
+    | Name         | Type      | Description                  |
+    | ------------ | --------- | ---------------------------- |
+    | `user`     | string    | Followed user      |
+    | `preference`   | bit       | Whether to enable post notifications |
+
+    ## Tokens & Authentication
+
+    ### Invalidating a token
+    Each time a user logs in, a new token is created for their account. You can invalidate the current user's token by value or id.
+
+    **Body**
+
+    Must be sent as `FormData`
+
+    | Name         | Type      | Description                  |
+    | ------------ | --------- | ---------------------------- |
+    | ?`token`     | string    | Token to be invalidated      |
+    | ?`tokenId`   | int       | ID of the token to be invalidated |
+
+    :::note
+    At least one parameter must be specified
+    :::
+
+
+
