@@ -108,7 +108,11 @@ const sidebars = {
         'api/user',
         'api/posts',
         'api/polls',
-        'api/comments'
+        'api/comments',
+        'api/items',
+        'api/emojiPack',
+        'api/emojis',
+        'api/search'
       ],
     },
   ],

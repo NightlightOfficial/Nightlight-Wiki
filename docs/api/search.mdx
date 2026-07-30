@@ -1,0 +1,73 @@
+---
+sidebar_label: 'Search'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Searching
+
+## Users
+
+<mark style={{color:'green'}}>`POST`</mark> `/search/users`
+
+    Search for users on Nightlight with a given query
+
+    **Body**
+
+        | Name      | Type      | Description                     |
+        | --------- | --------- | ------------------------------- |
+        | `query` | string    | The query to search for        |
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <UserData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+## Posts
+
+<mark style={{color:'green'}}>`POST`</mark> `/search/posts`
+
+    Search for posts on Nightlight with a given query
+
+    **Body**
+
+        | Name      | Type      | Description                     |
+        | --------- | --------- | ------------------------------- |
+        | `query` | string    | The query to search for        |
+        | ?`after` | string    | Only search for posts after a certain date |
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <PostData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>

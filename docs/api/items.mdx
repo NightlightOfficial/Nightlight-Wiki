@@ -1,0 +1,97 @@
+---
+sidebar_label: 'Items'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Items
+
+## Retrieving
+
+<mark style={{color:'green'}}>`GET`</mark> `/items`
+
+    Retrieving data about all items available on Nightlight
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <ItemData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    #### ItemData example
+
+    ```json
+    [
+        {
+            "id":"1000users",
+            "format":"png",
+            "image":"1000users.png",
+            "title":"1000 Users Celebration",
+            "description":"Only obtainable for first 1000 registered users",
+            "author":"Nightlight","type":"0","price":"-1","rarity":"0",
+            "collab":null,
+            "stellnix":"0",
+            "purchasable":"1",
+            "dateAdded":"2024-12-31 23:00:00",
+            "owners":"987"
+        },
+        ...
+    ]
+    ```
+
+<mark style={{color:'green'}}>`GET`</mark> `/items/{id}`
+
+    Retrieving data about a specified item from its id
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <ItemData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    #### ItemData example
+
+    ```json
+    {
+        "id":"1000users",
+        "format":"png",
+        "image":"1000users.png",
+        "title":"1000 Users Celebration",
+        "description":"Only obtainable for first 1000 registered users",
+        "author":"Nightlight","type":"0","price":"-1","rarity":"0",
+        "collab":null,
+        "stellnix":"0",
+        "purchasable":"1",
+        "dateAdded":"2024-12-31 23:00:00",
+        "owners":"987"
+    }
+    ```

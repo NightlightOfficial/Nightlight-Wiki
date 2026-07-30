@@ -1,0 +1,95 @@
+---
+sidebar_label: 'Emojis'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Emojis
+
+## Retrieving
+
+<mark style={{color:'green'}}>`GET`</mark> `/emojipack/{id}`
+
+    Retrieving emojis from a specified Emoji Pack id
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <EmojiData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    #### EmojiData example
+
+    ```json
+    [
+        {
+            "id":1,
+            "name":"cry",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":2,
+            "name":"wow",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":3,
+            "name":"cool",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":4,
+            "name":"blush",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":5,
+            "name":"wave",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":6,
+            "name":"laugh",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":7,
+            "name":"coffee",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":8,
+            "name":"love",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        },
+        {
+            "id":9,
+            "name":"thumbsup",
+            "pack":"57a10d83b0",
+            "prefix":"nighty"
+        }
+    ]
+    ```

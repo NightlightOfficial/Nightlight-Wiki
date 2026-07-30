@@ -1,0 +1,45 @@
+---
+sidebar_label: 'Emoji Pack'
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Emoji Pack
+
+## Retrieving
+
+<mark style={{color:'green'}}>`GET`</mark> `/emojipack/{id}`
+
+    Retrieving data about the specified Emoji Pack
+
+    **Response**
+
+    <Tabs>
+        <TabItem value="200" label="200" default>
+            ```json
+            {
+                "status": "success",
+                "data": <EmojiPackData>
+            }
+            ```
+        </TabItem>
+        <TabItem value="400" label="400">
+            ```json
+            {
+                "error": "Invalid request"
+            }
+            ```
+        </TabItem>
+    </Tabs>
+
+    #### EmojiPackData example
+
+    ```json
+    {
+        "id":"57a10d83b0",
+        "prefix":"nighty",
+        "title":"Nighty V2",
+        "author":"nightlight"
+    }
+    ```
